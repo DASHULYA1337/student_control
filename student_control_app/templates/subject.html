@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <h1 class="display-4">{{ subject.name }}</h1>
+            <p class="lead">{{ subject.description }}</p>
+            <p><strong> Всего часов: {{ subject.hours }}</strong></p>
+        </div>
+        <div class="col-4">
+            {% if subject.image %}
+                <img src={{ subject.image.url }} class="teacher-image">
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

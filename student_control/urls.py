@@ -1,21 +1,18 @@
-"""student_control URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/1.11/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  url(r'^$', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  url(r'^$', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.conf.urls import url, include
-    2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
-"""
+from django.conf import settings
 from django.conf.urls import url
 from django.contrib import admin
+from django.views.static import serve
+
+from student_control_app.views import *
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT, }),
+    url(r'^$', index, name='root_url'),
+    url(r'^teacher/(?P<teacher_id>\d+)/$', teacher, name='teacher_details'),
+    url(r'^subject/(?P<subject_id>\d+)/$', subject, name='subject_details'),
+    url(r'^activity/(?P<activity_id>\d+)/$', activity, name='activity_details'),
+    url(r'^students/', students, name='students_list'),
+    url(r'^teachers/', teachers, name='teachers_list'),
+    url(r'^subjects/', subjects, name='subjects_list'),
 ]

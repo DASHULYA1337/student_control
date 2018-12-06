@@ -12,14 +12,11 @@ venv/
 bin/
 lib/
 include/
-media/
-static/*
 
 
 # Django stuff:
 *.log
 *.pot
-*.sqlite3
 *.zip
 *.rdb
 *.DS_Store

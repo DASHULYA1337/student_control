@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Список предметов</h1>
+
+    <br>
+
+    <div class="list-group">
+        {% for subject in subjects %}
+            <a href={{ "/subject/" }}{{ subject.id }} class="list-group-item list-group-item-action">
+            {{ subject.name }}
+            </a>
+        {% endfor %}
+    </div>
+
+{% endblock %}

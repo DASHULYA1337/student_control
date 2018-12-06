@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Список студентов</h1>
+
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Курс</th>
+            <th scope="col">Средняя оценка</th>
+            <th scope="col">Несданных экзаменов</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for student in students %}
+            <tr>
+                <th scope="row">{{ student.name }}</th>
+                <td>{{ student.course }}</td>
+                <td>{{ student.get_average_mark }}</td>
+                <td>{{ student.get_bad_marks }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Занятие по {{ activity.subject.name }}</h1>
+
+    <hr class="my-4">
+
+    <p>Дата проведения: {{ activity.date }}</p>
+    <p>Тип заниятия: {{ activity.get_type_display }}</p>
+    <p>Тема заниятия: {{ activity.theme }}</p>
+    <p>Преподаватель: <a href={{ "/teacher/" }}{{ activity.teacher.id }}>{{ activity.teacher.name }}</a></p>
+    <p>Аудитория: {{ activity.classroom_number }}</p>
+
+    <br>
+
+    <h4>Оценки за занятие</h4>
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Имя</th>
+            <th scope="col">Оценка</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for mark in marks %}
+            <tr>
+                <th scope="row">{{ mark.student.name }}</th>
+                <td>{{ mark.value }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}

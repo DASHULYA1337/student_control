@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-8">
+            <h1 class="display-4">{{ teacher.name }}</h1>
+            <p class="lead">{{ teacher.description }}</p>
+            <hr class="my-4">
+            <span>Предметы: </span>
+            {% for subject in teacher.subjects.all %}
+                <a href={{ "/subject/" }}{{ subject.id }} class="badge badge-secondary">{{ subject.name }}</a>
+            {% endfor %}
+        </div>
+        <div class="col-4">
+            {% if teacher.image %}
+                <img src={{ teacher.image.url }} class="teacher-image">
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}
